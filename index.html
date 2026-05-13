@@ -332,7 +332,7 @@
 
     <!-- ── Mobile: Horizontal scrollable image cards ── -->
     <div class="md:hidden -mx-gutter">
-      <div id="mobile-service-scroll" class="flex gap-sm overflow-x-auto pb-sm px-gutter no-scrollbar snap-x snap-mandatory" style="scroll-padding-left:24px;">
+      <div id="mobile-service-scroll" class="flex gap-sm overflow-x-auto pb-sm px-gutter no-scrollbar snap-x snap-mandatory" style="scroll-padding-left:24px;touch-action:pan-x;overscroll-behavior-x:contain;">
 
         <!-- Card 1 -->
         <div class="reveal flex-none w-[72vw] snap-start rounded-2xl overflow-hidden relative" style="height:300px;">
@@ -409,7 +409,7 @@
       <h2 class="text-headline-md mt-xs" style="font-family:'Source Serif 4',serif;">Unsere Projekte</h2>
       <p class="text-body-md text-on-surface-variant mt-xs">Ausgewählte Arbeiten aus dem Kanton Zürich.</p>
     </div>
-    <div class="flex gap-sm overflow-x-auto pb-sm -mx-gutter px-gutter no-scrollbar">
+    <div class="flex gap-sm overflow-x-auto pb-sm -mx-gutter px-gutter no-scrollbar" style="touch-action:pan-x;overscroll-behavior-x:contain;">
       <div class="flex-none w-52 rounded-xl overflow-hidden relative gallery-img" style="height:190px;">
         <div class="absolute inset-0 bg-primary/40"></div>
         <img src="generate_Pic/images/finished_living_room.jpg" alt="Wohnzimmer" class="absolute inset-0 w-full h-full object-cover" loading="lazy" onerror="this.style.opacity='0'">
