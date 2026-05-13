@@ -1,0 +1,606 @@
+<!DOCTYPE html>
+<html class="scroll-smooth" lang="de">
+<head>
+  <meta charset="utf-8"/>
+  <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+  <title>Maler Binder &amp; Nick – Schweizer Qualitätsmaler Winterthur</title>
+  <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;700&family=Source+Serif+4:ital,opsz,wght@0,8..60,600..700;1,8..60,600..700&display=swap" rel="stylesheet"/>
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+  <script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          colors: {
+            "on-primary-container": "#000605",
+            "primary-container": "#008675",
+            "surface-container-lowest": "#ffffff",
+            "primary": "#006a5d",
+            "surface-dim": "#dadad8",
+            "surface-container-low": "#f4f4f1",
+            "secondary-fixed-dim": "#b1d35a",
+            "surface-variant": "#e2e3e0",
+            "secondary-container": "#ccf073",
+            "inverse-surface": "#2f3130",
+            "surface-bright": "#f9f9f7",
+            "surface-container-high": "#e8e8e6",
+            "on-surface-variant": "#3d4946",
+            "inverse-primary": "#72d8c4",
+            "secondary-fixed": "#ccf073",
+            "on-surface": "#1a1c1b",
+            "surface-container-highest": "#e2e3e0",
+            "on-tertiary": "#ffffff",
+            "on-secondary-container": "#536d00",
+            "outline": "#6d7a76",
+            "on-secondary": "#ffffff",
+            "secondary": "#4e6700",
+            "background": "#f9f9f7",
+            "on-primary": "#ffffff",
+            "surface-container": "#eeeeec",
+            "surface-tint": "#006b5d",
+            "inverse-on-surface": "#f1f1ef",
+            "primary-fixed": "#8ff5e0",
+            "on-primary-fixed": "#00201b",
+            "on-background": "#1a1c1b",
+            "outline-variant": "#bdc9c5",
+            "primary-fixed-dim": "#72d8c4"
+          },
+          borderRadius: {
+            "DEFAULT": "0.125rem",
+            "lg": "0.25rem",
+            "xl": "0.5rem",
+            "2xl": "1rem",
+            "3xl": "1.5rem",
+            "full": "9999px"
+          },
+          spacing: {
+            "base": "8px",
+            "xs": "4px",
+            "sm": "12px",
+            "md": "24px",
+            "lg": "48px",
+            "xl": "80px",
+            "container-max": "1280px",
+            "gutter": "24px"
+          },
+          fontSize: {
+            "display-lg":        ["56px",  { lineHeight: "1.1", letterSpacing: "-0.02em", fontWeight: "700" }],
+            "headline-lg":       ["40px",  { lineHeight: "1.2", fontWeight: "600" }],
+            "headline-lg-mobile":["32px",  { lineHeight: "1.2", fontWeight: "600" }],
+            "headline-md":       ["28px",  { lineHeight: "1.3", fontWeight: "600" }],
+            "label-md":          ["14px",  { lineHeight: "1.2", letterSpacing: "0.05em", fontWeight: "600" }],
+            "button":            ["16px",  { lineHeight: "1",   letterSpacing: "0.02em", fontWeight: "600" }],
+            "body-lg":           ["18px",  { lineHeight: "1.6", fontWeight: "400" }],
+            "body-md":           ["16px",  { lineHeight: "1.5", fontWeight: "400" }]
+          }
+        }
+      }
+    }
+  </script>
+  <style>
+    body { font-family: 'Manrope', sans-serif; }
+    h1, h2, h3 { font-family: 'Source Serif 4', serif; }
+
+    .material-symbols-outlined {
+      font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+      display: inline-block;
+      line-height: 1;
+      vertical-align: middle;
+    }
+
+    /* Mobile menu slide-in */
+    #mobile-menu {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.3s ease, opacity 0.3s ease;
+      opacity: 0;
+    }
+    #mobile-menu.open {
+      max-height: 500px;
+      opacity: 1;
+    }
+
+    /* Hover lift on service cards */
+    .card-hover {
+      transition: box-shadow 0.25s ease, transform 0.25s ease;
+    }
+    .card-hover:hover {
+      box-shadow: 0 10px 30px rgba(0, 106, 93, 0.08);
+      transform: translateY(-2px);
+    }
+  </style>
+</head>
+
+<body class="bg-background text-on-surface">
+
+<!-- ═══════════════════════════════════════
+     NAVIGATION
+═══════════════════════════════════════ -->
+<header class="fixed top-0 w-full z-50 bg-surface/95 backdrop-blur-md border-b border-outline-variant/30 shadow-sm">
+  <nav class="flex justify-between items-center px-gutter py-sm max-w-container-max mx-auto">
+
+    <!-- Brand -->
+    <a href="#" class="font-serif text-headline-md text-primary tracking-tight leading-none">
+      Maler Binder &amp; Nick
+    </a>
+
+    <!-- Desktop links (hidden on mobile) -->
+    <div class="hidden md:flex items-center gap-lg">
+      <a class="text-button text-primary border-b-2 border-primary pb-0.5 font-semibold" href="#">Home</a>
+      <a class="text-button text-on-surface-variant hover:text-primary transition-colors duration-200 font-semibold" href="#services">Services</a>
+      <a class="text-button text-on-surface-variant hover:text-primary transition-colors duration-200 font-semibold" href="#references">Referenzen</a>
+      <a class="text-button text-on-surface-variant hover:text-primary transition-colors duration-200 font-semibold" href="#about">Über uns</a>
+      <a class="text-button text-on-surface-variant hover:text-primary transition-colors duration-200 font-semibold" href="#contact">Kontakt</a>
+    </div>
+
+    <!-- Desktop CTA -->
+    <button class="hidden md:block bg-secondary-container text-on-secondary-container px-md py-sm text-button rounded-lg hover:opacity-85 transition-opacity duration-200 active:scale-95 font-semibold">
+      Gratis Offerte
+    </button>
+
+    <!-- Mobile hamburger -->
+    <button id="menu-toggle" class="md:hidden text-primary active:scale-90 transition-transform duration-200 focus:outline-none" aria-label="Menü öffnen" aria-expanded="false">
+      <span class="material-symbols-outlined" style="font-size:30px;" id="menu-icon">menu</span>
+    </button>
+  </nav>
+
+  <!-- Mobile dropdown menu -->
+  <div id="mobile-menu" class="md:hidden bg-surface border-t border-outline-variant/20">
+    <div class="px-gutter py-md flex flex-col gap-xs">
+      <a class="text-button text-primary font-semibold py-sm border-b border-outline-variant/20" href="#">Home</a>
+      <a class="text-button text-on-surface-variant hover:text-primary font-semibold py-sm border-b border-outline-variant/20 transition-colors" href="#services" id="m-services">Services</a>
+      <a class="text-button text-on-surface-variant hover:text-primary font-semibold py-sm border-b border-outline-variant/20 transition-colors" href="#about" id="m-about">Über uns</a>
+      <a class="text-button text-on-surface-variant hover:text-primary font-semibold py-sm border-b border-outline-variant/20 transition-colors" href="#contact" id="m-contact">Kontakt</a>
+      <button class="mt-sm bg-secondary-container text-on-secondary-container px-md py-sm text-button rounded-lg w-full font-semibold">
+        Gratis Offerte
+      </button>
+    </div>
+  </div>
+</header>
+
+<main class="pt-[62px] md:pt-[72px]">
+
+  <!-- ═══════════════════════════════════════
+       HERO
+  ═══════════════════════════════════════ -->
+  <section class="relative overflow-hidden" style="height: clamp(580px, 85vh, 870px);">
+    <!-- Background image -->
+    <img
+      alt="Premium Swiss interior painting"
+      class="absolute inset-0 w-full h-full object-cover object-center"
+      src="https://lh3.googleusercontent.com/aida-public/AB6AXuD6UjmAaCzz8OGfHl2r4nC0QQHqmBUfZ3aWWelTfaXgSYeCWASSyKcJ20Q9pCTCUdViDGrzXcsxQ5u712JM8bRk1VivqotcsNyzVUfNlSci5bqW3IkBVH1qqmakPn5FI5tv7iRgzaeRDptpyFYHAp-Yw0nt6UniRvQXdVlrVXnDaoJbJhHz3x9JMBsoTmyn8b0-38Pp0Rpxid6TdxLHDHx9a8xcT6dVE-h0lkRzmXw1FMeJxvb66c34ylX-MOWbLosqd4cyFO9DAUS8"
+    />
+
+    <!-- Desktop overlay: left-side gradient -->
+    <div class="absolute inset-0 hidden md:block" style="background: linear-gradient(to right, rgba(26,28,27,0.72) 0%, rgba(26,28,27,0.45) 50%, transparent 100%);"></div>
+
+    <!-- Mobile overlay: bottom gradient -->
+    <div class="absolute inset-0 md:hidden" style="background: linear-gradient(to top, rgba(0,0,0,0.82) 0%, rgba(0,0,0,0.35) 55%, transparent 100%);"></div>
+
+    <!-- ── Desktop content (centered-left) ── -->
+    <div class="hidden md:flex absolute inset-0 items-center">
+      <div class="px-gutter max-w-container-max mx-auto w-full">
+        <div class="max-w-2xl">
+          <span class="inline-block bg-primary text-on-primary px-sm py-xs text-label-md mb-md uppercase tracking-widest rounded">
+            Tradition &amp; Präzision
+          </span>
+          <h1 class="text-display-lg text-white mb-md" style="font-family: 'Source Serif 4', serif;">
+            Schweizer Qualitäts-Maler Winterthur
+          </h1>
+          <p class="text-body-lg text-white/90 mb-lg max-w-xl">
+            Präzision und Leidenschaft für Ihre Wohnräume. Wir verwandeln Visionen in handwerkliche Meisterwerke.
+          </p>
+          <div class="flex gap-md flex-wrap">
+            <button class="bg-secondary-container text-on-secondary-container px-lg py-md text-button rounded-lg hover:opacity-90 transition-opacity duration-200 active:scale-95 font-semibold">
+              Gratis Offerte einholen
+            </button>
+            <button class="border-2 border-white text-white px-lg py-md text-button rounded-lg hover:bg-white hover:text-on-surface transition-colors duration-200 active:scale-95 font-semibold">
+              Unsere Arbeiten
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ── Mobile content (bottom-aligned) ── -->
+    <div class="md:hidden absolute inset-0 flex flex-col justify-end px-gutter pb-xl">
+      <span class="text-label-md text-secondary-container mb-sm inline-block font-semibold">SEIT 1985</span>
+      <h1 class="text-headline-lg-mobile text-white mb-md" style="font-family: 'Source Serif 4', serif;">
+        Präzision in Farbe.<br>Handwerk mit Seele.
+      </h1>
+      <p class="text-body-md text-white/85 mb-lg max-w-xs">
+        Wir bringen Schweizer Exzellenz in Ihre Räumlichkeiten. Sauber, termingerecht und mit Liebe zum Detail.
+      </p>
+      <button class="bg-secondary-container text-on-secondary-container py-md px-lg text-button rounded shadow-sm active:scale-95 transition-transform duration-200 font-semibold self-start">
+        Angebot anfordern
+      </button>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════
+       SERVICES
+  ═══════════════════════════════════════ -->
+  <section class="py-xl px-gutter max-w-container-max mx-auto" id="services">
+
+    <!-- Desktop heading -->
+    <div class="hidden md:block text-center mb-xl">
+      <h2 class="text-headline-lg text-on-surface mb-sm" style="font-family: 'Source Serif 4', serif;">Unsere Expertise</h2>
+      <div class="w-20 h-1 bg-primary mx-auto rounded-full"></div>
+    </div>
+
+    <!-- Mobile heading -->
+    <div class="md:hidden mb-lg">
+      <span class="text-label-md text-primary uppercase tracking-widest font-semibold">Unsere Leistungen</span>
+      <h2 class="text-headline-md mt-xs" style="font-family: 'Source Serif 4', serif;">Meisterhaftes Handwerk</h2>
+    </div>
+
+    <!-- ── Desktop: Bento grid ── -->
+    <div class="hidden md:grid grid-cols-4 gap-md">
+      <!-- Large feature card -->
+      <div class="col-span-2 row-span-2 group relative overflow-hidden rounded-xl border border-outline-variant bg-surface-container-low p-md flex flex-col justify-end min-h-[400px] card-hover">
+        <img
+          alt="Malerarbeiten"
+          class="absolute inset-0 w-full h-full object-cover transition-transform duration-500 group-hover:scale-105 opacity-35"
+          src="https://lh3.googleusercontent.com/aida-public/AB6AXuDe3Ij9x5JhqhRVWB5_bTnn5D9ZDKE7wUFV0o6ro5EtDPBIXhD-WhGURiQ2WlmmxZpHNaeRqg45qY2b0aJf8uCTje3A2Pxryb35A0Tx3sXz6gQKhZC3tk2PXguTVpzSMrhaUsYaSLC0Vvu-bfSHkb-0DJ4UOwzY64ZQCo7ElvJC6HMP58OP6_OizvPg4BpLlBw48Iw8_Zrca5VJhrLkY7n2lbP1VczliUyd0anBHQILwSMIx7JVbaO45fGEmwSX6stL3KW3KJnLQRhT"
+        />
+        <div class="relative z-10">
+          <span class="material-symbols-outlined text-primary mb-sm" style="font-size:36px;">brush</span>
+          <h3 class="text-headline-md mb-xs" style="font-family:'Source Serif 4',serif;">Malerarbeiten</h3>
+          <p class="text-body-md text-on-surface-variant max-w-sm">Klassische Innen- und Aussenanstriche mit höchster Sorgfalt und langlebigen Materialien.</p>
+        </div>
+      </div>
+      <!-- Small cards -->
+      <div class="group border border-outline-variant rounded-xl p-md bg-white card-hover">
+        <span class="material-symbols-outlined text-primary mb-md" style="font-size:28px;">format_paint</span>
+        <h3 class="text-button mb-xs font-semibold">Spritztechnik</h3>
+        <p class="text-body-md text-on-surface-variant">Effiziente und makellose Oberflächen für grossflächige Projekte.</p>
+      </div>
+      <div class="group border border-outline-variant rounded-xl p-md bg-white card-hover">
+        <span class="material-symbols-outlined text-primary mb-md" style="font-size:28px;">grid_view</span>
+        <h3 class="text-button mb-xs font-semibold">Tapezieren</h3>
+        <p class="text-body-md text-on-surface-variant">Exklusive Wandbeläge für ein individuelles Raumgefühl.</p>
+      </div>
+      <div class="group border border-outline-variant rounded-xl p-md bg-white card-hover">
+        <span class="material-symbols-outlined text-primary mb-md" style="font-size:28px;">texture</span>
+        <h3 class="text-button mb-xs font-semibold">Verputzen</h3>
+        <p class="text-body-md text-on-surface-variant">Strukturierte Oberflächen für moderne Akzente.</p>
+      </div>
+      <div class="group border border-outline-variant rounded-xl p-md bg-white card-hover">
+        <span class="material-symbols-outlined text-primary mb-md" style="font-size:28px;">architecture</span>
+        <h3 class="text-button mb-xs font-semibold">Gipsarbeiten</h3>
+        <p class="text-body-md text-on-surface-variant">Formvollendete Trockenbau-Lösungen nach Mass.</p>
+      </div>
+      <!-- Wide bottom card -->
+      <div class="col-span-2 group border border-outline-variant rounded-xl p-md bg-surface-container-low card-hover">
+        <div class="flex gap-md items-center">
+          <div class="p-sm bg-primary/10 rounded-full flex-shrink-0">
+            <span class="material-symbols-outlined text-primary" style="font-size:28px;">home_repair_service</span>
+          </div>
+          <div>
+            <h3 class="text-headline-md mb-xs" style="font-family:'Source Serif 4',serif;">Fassaden &amp; Isolationen</h3>
+            <p class="text-body-md text-on-surface-variant">Wertsteigerung und Energieeffizienz für Ihr Gebäude.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ── Mobile: Vertical list ── -->
+    <div class="flex flex-col gap-md md:hidden">
+      <div class="flex items-start gap-md p-md bg-surface-container-low border border-outline-variant/30 rounded-lg">
+        <div class="bg-primary/10 p-sm rounded text-primary flex-shrink-0">
+          <span class="material-symbols-outlined">format_paint</span>
+        </div>
+        <div>
+          <h3 class="text-button text-on-surface font-semibold">Innenanstrich</h3>
+          <p class="text-body-md text-on-surface-variant mt-xs">Hochwertige Wandgestaltung für ein gesundes Wohnklima.</p>
+        </div>
+      </div>
+      <div class="flex items-start gap-md p-md bg-surface-container-low border border-outline-variant/30 rounded-lg">
+        <div class="bg-primary/10 p-sm rounded text-primary flex-shrink-0">
+          <span class="material-symbols-outlined">home_work</span>
+        </div>
+        <div>
+          <h3 class="text-button text-on-surface font-semibold">Fassadenrenovierung</h3>
+          <p class="text-body-md text-on-surface-variant mt-xs">Schutz und Ästhetik für die Werterhaltung Ihrer Immobilie.</p>
+        </div>
+      </div>
+      <div class="flex items-start gap-md p-md bg-surface-container-low border border-outline-variant/30 rounded-lg">
+        <div class="bg-primary/10 p-sm rounded text-primary flex-shrink-0">
+          <span class="material-symbols-outlined">brush</span>
+        </div>
+        <div>
+          <h3 class="text-button text-on-surface font-semibold">Dekorative Techniken</h3>
+          <p class="text-body-md text-on-surface-variant mt-xs">Exklusive Spachtel- und Lasurtechniken für Unikate.</p>
+        </div>
+      </div>
+      <div class="flex items-start gap-md p-md bg-surface-container-low border border-outline-variant/30 rounded-lg">
+        <div class="bg-primary/10 p-sm rounded text-primary flex-shrink-0">
+          <span class="material-symbols-outlined">home_repair_service</span>
+        </div>
+        <div>
+          <h3 class="text-button text-on-surface font-semibold">Fassaden &amp; Isolationen</h3>
+          <p class="text-body-md text-on-surface-variant mt-xs">Schutz und Energieeffizienz für Ihre Immobilie.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════
+       ABOUT US
+  ═══════════════════════════════════════ -->
+  <section class="py-xl bg-surface-container-low" id="about">
+    <div class="max-w-container-max mx-auto px-gutter">
+
+      <!-- ── Desktop: Two-column with photo ── -->
+      <div class="hidden md:grid grid-cols-2 gap-xl items-center">
+        <div class="relative">
+          <div class="aspect-square rounded-xl overflow-hidden border-8 border-white shadow-xl">
+            <img
+              alt="Maler Binder & Nick Team"
+              class="w-full h-full object-cover"
+              src="https://lh3.googleusercontent.com/aida-public/AB6AXuDAwGdX-A_wnYYag4jtvHCTRZ2eJ-PxX1eB0sJMYUe8pqMj2x6uoYCHg4tzP_DpsOo3dZB-Wqs0TJ3awfjU4DqnnEzds1zDi14XCG0ADWDha16ZDogF7d0JMjqDn0ONI1GkWF4_Nn-2dJvgLtyGc8Zi8qJBj6skzCoyEZ6JC0Y54oTQguMaxV_qEGeriBxVbaBhOcX1D-tITiKht4uSqMW8f1ZjVdEhQayp9FFDKFYkYiykSeJqtwnhVvPTS5HPyA6SbVibaRObcxfZ"
+            />
+          </div>
+          <div class="absolute -bottom-md -right-md bg-secondary-container p-md rounded-lg shadow-lg">
+            <p class="text-headline-md text-on-secondary-container" style="font-family:'Source Serif 4',serif;">35+ Jahre</p>
+            <p class="text-label-md text-on-secondary-container font-semibold">Erfahrung</p>
+          </div>
+        </div>
+        <div>
+          <h2 class="text-headline-lg mb-md text-primary" style="font-family:'Source Serif 4',serif;">Maler Binder &amp; Nick</h2>
+          <p class="text-body-lg mb-md text-on-surface">
+            Ein Familienunternehmen mit Wurzeln in der Region Winterthur. Seit Jahrzehnten stehen wir für Schweizer Handwerkskunst, absolute Zuverlässigkeit und ökologische Verantwortung.
+          </p>
+          <p class="text-body-md mb-lg text-on-surface-variant">
+            Wir verwenden ausschliesslich umweltfreundliche Farben und nachhaltige Arbeitstechniken. Unser Team kombiniert traditionelle Methoden mit modernster Technik, um für Sie das beste Ergebnis zu erzielen – sauber, effizient und termingerecht.
+          </p>
+          <ul class="space-y-sm">
+            <li class="flex items-center gap-sm">
+              <span class="material-symbols-outlined text-primary" style="font-variation-settings:'FILL' 1;">check_circle</span>
+              <span class="text-button font-semibold">Zertifizierte Fachkräfte</span>
+            </li>
+            <li class="flex items-center gap-sm">
+              <span class="material-symbols-outlined text-primary" style="font-variation-settings:'FILL' 1;">eco</span>
+              <span class="text-button font-semibold">Nachhaltige Materialien</span>
+            </li>
+            <li class="flex items-center gap-sm">
+              <span class="material-symbols-outlined text-primary" style="font-variation-settings:'FILL' 1;">timer</span>
+              <span class="text-button font-semibold">Schweizer Präzisionsterminierung</span>
+            </li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- ── Mobile: Quote + Stats ── -->
+      <div class="md:hidden">
+        <h2 class="text-headline-md mb-md" style="font-family:'Source Serif 4',serif;">Über uns</h2>
+        <p class="text-body-lg text-on-surface-variant mb-md italic border-l-4 border-primary pl-md">
+          "Qualität ist kein Zufall, sie ist das Ergebnis konsequenter Präzision."
+        </p>
+        <p class="text-body-md text-on-surface-variant mb-lg">
+          Maler Binder &amp; Nick steht seit über drei Jahrzehnten für Schweizer Zuverlässigkeit. Als Familienbetrieb verbinden wir traditionelles Handwerk mit modernsten, ökologischen Materialien.
+        </p>
+        <div class="grid grid-cols-2 gap-md">
+          <div class="flex flex-col">
+            <span class="text-display-lg text-primary leading-none" style="font-family:'Source Serif 4',serif;">35+</span>
+            <span class="text-label-md text-on-surface-variant mt-xs font-semibold">Jahre Erfahrung</span>
+          </div>
+          <div class="flex flex-col">
+            <span class="text-display-lg text-primary leading-none" style="font-family:'Source Serif 4',serif;">12</span>
+            <span class="text-label-md text-on-surface-variant mt-xs font-semibold">Spezialisten</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════
+       PARTNERS (desktop only)
+  ═══════════════════════════════════════ -->
+  <section class="hidden md:block py-xl px-gutter max-w-container-max mx-auto" id="references">
+    <h2 class="text-label-md text-center text-outline mb-lg uppercase tracking-[0.2em] font-semibold">Unsere Partner &amp; Referenzen</h2>
+    <div class="flex flex-wrap justify-center gap-xl items-center opacity-60 grayscale hover:grayscale-0 hover:opacity-100 transition-all duration-500">
+      <img alt="Partner" class="h-10 object-contain" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDoN-AH0S16i97c6Nf-QRJgeT3GPFEQf1DKFlU1-PkVYXiaUd6sZWBUEp_FiVVnP5KZVe5dnWQ2_Z8wCzxdq23ia-ghsmEN900kcediDZNDq0QmzO_FUwUWkvV0WsJFPsXn_17203eh5zWIWB5nrOLhSIB3lFPVmJunYjnInDDaGMjCmWniuBU1OpJh7Sk3-aNab7AzhC_9PCrWRrV3vlyuSAi9_FZX2avmEQ4TT3JNdCf9MwGbprCJB0qSIhxNZLKhtRXqkw7kYw6I"/>
+      <img alt="Partner" class="h-12 object-contain" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAyUV0Z71ywwi-KPZ6h4n52ifrknxqH5fBw2kd22kISxhqpWWwN4FJySPPEe1o6qsAq77_Se6Jm7Syl6tCnrJgPVjgz6CuS2AAx5pbeUlrKPp4Hh79t6_MfZ7V7hAN1itUbva8vPHiJ1SAeuOOeo9kPbzaJoKb5UisdmwaXr5aH2-rtuJKxMp5rlWU44fhz8bhrKbrlhkzf9-MprxS4bpyOnmC5rl7xng-F-V0eYrYn-9RJCS8b1MqnCUedcEWWhu5iD6kYt9bwvYt6"/>
+      <img alt="Partner" class="h-10 object-contain" src="https://lh3.googleusercontent.com/aida-public/AB6AXuALJZRcuaAvjXlX7a019ThAt3baFzKLEoGKkmat__FsHJ_nVVndqEiqFbouGB3RNM9TzRP7tRp4pzEuvtHVzSiaotK6-kfTMwU8i1DR9SJfu2ZoiOCed3p8iidcYBsH1eLglhNNhL-wNZXiEPZ8z3eCrFyuD-9Az6BhNtzozF2zSSiQ9H_n1i3Cpdto4K-6lYg3UnwlySSPr2KYjaaeRgub9Y7I_6p8tcKFgAEpkktfkMY6Es7i_-PSQUaxIksmMBmEFMDnKmU5KZ-b"/>
+      <img alt="Partner" class="h-8 object-contain"  src="https://lh3.googleusercontent.com/aida-public/AB6AXuA4ZIb350E0_gu-DLtj8RoN1mBlbhS__Mh4L-C4h5MJI828ecbq2CkpDOEkc-mrGwmni4M-G3un3FmWd9XhymKZaydMT5WMRJz_u06nbGdv8i4QAmrFK3hFi432YXI2zfM1toj7WLBP73CupUFBGo1WHUMqvyfSzSM4QSOjOT2-KyrWzPr_aHnI7MRLucPkBjLesHQweZSUjvx5qnsfTTMzOyxdqPnoTccMszZMX1lfmzejrY-B7-ianPauh-5ufNHwVjNEcMR56F61"/>
+      <img alt="Partner" class="h-10 object-contain" src="https://lh3.googleusercontent.com/aida-public/AB6AXuA5f1DHmQQ_j56z8NOZuWY8RyYnBfkn-DXIQl2ltfvDPe6YXTC6ZttusEI5z8x8MvbA1yM5IPvAPSXy5XnzA0bOmnzGMKxjOXbXa-7C_p1J3I70CKvBwN9TYAIC2__gqUpEXo_RNaVyuxXM6JuXKQgetCsD5yYPf9NQ_CgELs5wu5oAwJxnKTHpcBtBBkTiDm922PbzzqnG7z3ybvPjwdYAuSycl2Jd2iPd0Nv6pQEvhNrPooUuj-y5MBHnS2af3IoReQNlgbsAJUFw"/>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════
+       TESTIMONIALS
+  ═══════════════════════════════════════ -->
+
+  <!-- Desktop: 3-column grid -->
+  <section class="hidden md:block py-xl bg-primary text-on-primary">
+    <div class="max-w-container-max mx-auto px-gutter text-center">
+      <h2 class="text-headline-lg mb-xl" style="font-family:'Source Serif 4',serif;">Stimmen unserer Kunden</h2>
+      <div class="grid grid-cols-3 gap-lg">
+        <div class="bg-primary-container p-lg rounded-xl border border-white/10" style="box-shadow:0 8px 32px rgba(0,0,0,0.15);">
+          <div class="flex justify-center mb-md gap-0.5">
+            <span class="material-symbols-outlined text-secondary-fixed" style="font-variation-settings:'FILL' 1;font-size:22px;">star</span>
+            <span class="material-symbols-outlined text-secondary-fixed" style="font-variation-settings:'FILL' 1;font-size:22px;">star</span>
+            <span class="material-symbols-outlined text-secondary-fixed" style="font-variation-settings:'FILL' 1;font-size:22px;">star</span>
+            <span class="material-symbols-outlined text-secondary-fixed" style="font-variation-settings:'FILL' 1;font-size:22px;">star</span>
+            <span class="material-symbols-outlined text-secondary-fixed" style="font-variation-settings:'FILL' 1;font-size:22px;">star</span>
+          </div>
+          <p class="text-body-md italic mb-md">"Hervorragende Arbeit! Pünktlich, sauber und extrem professionell. Unser Wohnzimmer sieht fantastisch aus."</p>
+          <p class="text-button font-semibold">— Markus S., Winterthur</p>
+        </div>
+        <div class="bg-primary-container p-lg rounded-xl border border-white/10" style="box-shadow:0 8px 32px rgba(0,0,0,0.15);">
+          <div class="flex justify-center mb-md gap-0.5">
+            <span class="material-symbols-outlined text-secondary-fixed" style="font-variation-settings:'FILL' 1;font-size:22px;">star</span>
+            <span class="material-symbols-outlined text-secondary-fixed" style="font-variation-settings:'FILL' 1;font-size:22px;">star</span>
+            <span class="material-symbols-outlined text-secondary-fixed" style="font-variation-settings:'FILL' 1;font-size:22px;">star</span>
+            <span class="material-symbols-outlined text-secondary-fixed" style="font-variation-settings:'FILL' 1;font-size:22px;">star</span>
+            <span class="material-symbols-outlined text-secondary-fixed" style="font-variation-settings:'FILL' 1;font-size:22px;">star</span>
+          </div>
+          <p class="text-body-md italic mb-md">"Die Fassadenrenovation wurde termingerecht und mit höchster Präzision ausgeführt. Absolut empfehlenswert."</p>
+          <p class="text-button font-semibold">— Elena M., Effretikon</p>
+        </div>
+        <div class="bg-primary-container p-lg rounded-xl border border-white/10" style="box-shadow:0 8px 32px rgba(0,0,0,0.15);">
+          <div class="flex justify-center mb-md gap-0.5">
+            <span class="material-symbols-outlined text-secondary-fixed" style="font-variation-settings:'FILL' 1;font-size:22px;">star</span>
+            <span class="material-symbols-outlined text-secondary-fixed" style="font-variation-settings:'FILL' 1;font-size:22px;">star</span>
+            <span class="material-symbols-outlined text-secondary-fixed" style="font-variation-settings:'FILL' 1;font-size:22px;">star</span>
+            <span class="material-symbols-outlined text-secondary-fixed" style="font-variation-settings:'FILL' 1;font-size:22px;">star</span>
+            <span class="material-symbols-outlined text-secondary-fixed" style="font-variation-settings:'FILL' 1;font-size:22px;">star</span>
+          </div>
+          <p class="text-body-md italic mb-md">"Die ökologische Farbwahl war uns wichtig. Maler Binder &amp; Nick hat uns hierbei perfekt beraten."</p>
+          <p class="text-button font-semibold">— Thomas B., Seuzach</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Mobile: Single centered testimonial -->
+  <section class="md:hidden py-xl px-gutter">
+    <div class="flex flex-col items-center text-center">
+      <span class="material-symbols-outlined text-primary mb-md" style="font-size:40px;font-variation-settings:'FILL' 1;">format_quote</span>
+      <p class="text-headline-md text-on-surface italic mb-lg" style="font-family:'Source Serif 4',serif;">
+        "Binder &amp; Nick haben unsere Erwartungen übertroffen. Die Baustelle war jeden Abend perfekt aufgeräumt."
+      </p>
+      <img
+        alt="Hans-Peter Egger"
+        class="w-16 h-16 rounded-full mb-sm object-cover grayscale"
+        src="https://lh3.googleusercontent.com/aida-public/AB6AXuBH8lATzzyXpUk0T4zt69G00aLG0rD1_LYmUgOf7RgE7RaDFyxUXd7oqGtDdlL0AsC__Tl8VX6tmCvucsRgey8ZNxXYF0WmpTK3mnHu_gw4ZHmps1UDDCNjD-l8KdTtmkExDq9-OLGfzMVL0eLsyhO0Khr8hgZb4-LRhHE-D53cTKHNQXDgEFWL_XipG2ezk7aLP-6ub1vk7eZd4gwu8hK_pTI8826DPwbp_tbjAu61UxLUIRgvQio7LKFW2jmS2AyhRNmrbLmm7wWk"
+      />
+      <span class="text-button text-on-surface font-semibold">Hans-Peter Egger</span>
+      <span class="text-body-md text-on-surface-variant">Architekt, Zürich</span>
+      <div class="flex gap-xs mt-lg">
+        <div class="w-2 h-2 rounded-full bg-primary"></div>
+        <div class="w-2 h-2 rounded-full bg-outline-variant"></div>
+        <div class="w-2 h-2 rounded-full bg-outline-variant"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════
+       CTA – Desktop (card inside container)
+  ═══════════════════════════════════════ -->
+  <section class="hidden md:block py-xl px-gutter max-w-container-max mx-auto" id="contact">
+    <div class="bg-surface-container-high rounded-3xl p-xl relative overflow-hidden">
+      <div class="absolute top-0 right-0 w-72 h-72 bg-secondary-container/20 rounded-full -translate-y-1/2 translate-x-1/2 blur-3xl pointer-events-none"></div>
+      <div class="relative z-10 text-center">
+        <h2 class="text-display-lg text-on-surface mb-md" style="font-family:'Source Serif 4',serif;">
+          Bereit für einen neuen Anstrich?
+        </h2>
+        <p class="text-body-lg text-on-surface-variant mb-lg max-w-xl mx-auto">
+          Kontaktieren Sie uns für eine unverbindliche Beratung und eine kostenlose Offerte für Ihr nächstes Projekt.
+        </p>
+        <div class="flex gap-md justify-center flex-wrap">
+          <a class="flex items-center gap-sm bg-primary text-on-primary px-lg py-md text-button rounded-lg hover:opacity-90 transition-opacity duration-200 active:scale-95 font-semibold" href="tel:+41520000000">
+            <span class="material-symbols-outlined">call</span>
+            Jetzt Anrufen
+          </a>
+          <button class="flex items-center gap-sm bg-secondary-container text-on-secondary-container px-lg py-md text-button rounded-lg hover:opacity-90 transition-opacity duration-200 active:scale-95 font-semibold">
+            <span class="material-symbols-outlined">description</span>
+            Gratis Offerte einholen
+          </button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA – Mobile (full-width teal) -->
+  <section class="md:hidden bg-primary py-xl px-gutter text-center" id="contact-mobile">
+    <h2 class="text-headline-md text-on-primary mb-md" style="font-family:'Source Serif 4',serif;">
+      Bereit für einen neuen Anstrich?
+    </h2>
+    <p class="text-body-md text-primary-fixed mb-lg">
+      Kontaktieren Sie uns für ein unverbindliches Beratungsgespräch direkt bei Ihnen vor Ort.
+    </p>
+    <div class="flex flex-col gap-md">
+      <a class="flex items-center justify-center gap-sm bg-secondary-container text-on-secondary-container py-md rounded-lg text-button font-semibold shadow-lg" href="tel:+41000000000">
+        <span class="material-symbols-outlined">call</span>
+        Jetzt anrufen
+      </a>
+      <button class="border-2 border-primary-fixed text-primary-fixed py-md rounded-lg text-button font-semibold">
+        Nachricht senden
+      </button>
+    </div>
+  </section>
+
+</main>
+
+<!-- ═══════════════════════════════════════
+     FOOTER
+═══════════════════════════════════════ -->
+<footer class="w-full bg-surface-container-highest">
+  <div class="grid grid-cols-1 md:grid-cols-4 gap-md px-gutter py-xl max-w-container-max mx-auto text-body-md">
+    <div class="md:col-span-1">
+      <div class="text-headline-md text-on-surface mb-md" style="font-family:'Source Serif 4',serif;">Maler Binder &amp; Nick</div>
+      <p class="text-on-surface-variant">Qualitätshandwerk aus Winterthur. Wir bringen Farbe in Ihr Leben – seit über 35 Jahren.</p>
+    </div>
+    <div>
+      <h4 class="text-button text-primary mb-md font-semibold">Dienstleistungen</h4>
+      <ul class="space-y-sm text-on-surface-variant">
+        <li><a class="hover:text-primary transition-colors duration-200" href="#">Innenarbeiten</a></li>
+        <li><a class="hover:text-primary transition-colors duration-200" href="#">Aussenfassaden</a></li>
+        <li><a class="hover:text-primary transition-colors duration-200" href="#">Gipsarbeiten</a></li>
+        <li><a class="hover:text-primary transition-colors duration-200" href="#">Dekorationstechniken</a></li>
+      </ul>
+    </div>
+    <div>
+      <h4 class="text-button text-primary mb-md font-semibold">Unternehmen</h4>
+      <ul class="space-y-sm text-on-surface-variant">
+        <li><a class="hover:text-primary transition-colors duration-200" href="#">Impressum</a></li>
+        <li><a class="hover:text-primary transition-colors duration-200" href="#">Datenschutz</a></li>
+        <li><a class="hover:text-primary transition-colors duration-200" href="#">AGB</a></li>
+        <li><a class="hover:text-primary transition-colors duration-200" href="#">FAQ</a></li>
+      </ul>
+    </div>
+    <div>
+      <h4 class="text-button text-primary mb-md font-semibold">Kontakt</h4>
+      <p class="text-on-surface-variant mb-xs">Malerweg 12</p>
+      <p class="text-on-surface-variant mb-xs">8400 Winterthur, Schweiz</p>
+      <p class="text-on-surface-variant mb-md">info@binder-nick.ch</p>
+      <div class="flex gap-md">
+        <a class="text-on-surface-variant hover:text-primary transition-colors duration-200" href="#" aria-label="Social Media">
+          <span class="material-symbols-outlined">share</span>
+        </a>
+        <a class="text-on-surface-variant hover:text-primary transition-colors duration-200" href="#" aria-label="Instagram">
+          <span class="material-symbols-outlined">photo_camera</span>
+        </a>
+      </div>
+    </div>
+  </div>
+  <div class="border-t border-outline-variant/30 py-md text-center text-outline text-label-md font-semibold">
+    © 2024 Maler Binder &amp; Nick. Swiss Craftsmanship &amp; Precision.
+  </div>
+</footer>
+
+<!-- Floating call button (mobile only) -->
+<a
+  class="fixed bottom-gutter right-gutter w-14 h-14 bg-primary text-on-primary rounded-full flex items-center justify-center shadow-xl z-40 md:hidden hover:opacity-90 transition-opacity duration-200 active:scale-95"
+  href="tel:+41000000000"
+  aria-label="Anrufen"
+>
+  <span class="material-symbols-outlined" style="font-variation-settings:'FILL' 1;">call</span>
+</a>
+
+<script>
+  const toggle = document.getElementById('menu-toggle');
+  const menu   = document.getElementById('mobile-menu');
+  const icon   = document.getElementById('menu-icon');
+
+  toggle.addEventListener('click', () => {
+    const isOpen = menu.classList.toggle('open');
+    icon.textContent = isOpen ? 'close' : 'menu';
+    toggle.setAttribute('aria-expanded', isOpen);
+  });
+
+  // Close when any menu link is tapped
+  menu.querySelectorAll('a').forEach(a => {
+    a.addEventListener('click', () => {
+      menu.classList.remove('open');
+      icon.textContent = 'menu';
+      toggle.setAttribute('aria-expanded', 'false');
+    });
+  });
+</script>
+
+</body>
+</html>
