@@ -1,0 +1,9 @@
+{
+  "prompt": "Architectural interior photograph of a recently professionally painted Swiss luxury living room. Walls are finished in a sophisticated warm greige tone (greige #C8BFB0). The space has high ceilings, modern Swiss design furniture in natural oak and linen upholstery, large floor-to-ceiling windows overlooking a misty Swiss hillside landscape. Perfect smooth wall surface showing master craftsman plaster work. Small decorative feature wall with subtle textured venetian plaster in a slightly darker shade. Natural afternoon light, soft shadows. 35mm lens, f/8, ISO 200, tripod mounted, perfectly composed architectural shot. Real estate photography style, ultra-sharp walls, slight vignette, no people.",
+  "negative_prompt": "no CGI render, no 3D visualization, no illustration, no artificial lighting, no stock photo style, no oversaturation, no plastic textures, no generic AI room",
+  "api_parameters": {
+    "resolution": "1K",
+    "output_format": "jpg",
+    "aspect_ratio": "4:5"
+  }
+}

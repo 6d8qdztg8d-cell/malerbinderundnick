@@ -1,0 +1,9 @@
+{
+  "prompt": "Documentary-style photograph of a professional Swiss painter in work clothes carefully applying creamy white paint to a freshly plastered interior wall with a wide brush. The room is a modern, bright Swiss apartment with natural oak parquet flooring. Late afternoon golden sunlight streams through a large window, casting warm rays across the wall. The painter wears clean beige work trousers and a white polo shirt with a small company logo. Paint bucket on the floor beside him, professional drop cloth protecting the floor. 28mm lens, f/5.6, ISO 320, handheld documentary shot, slight perspective lean, real construction site feel. Visible tool belt, safety tape along the skirting board. Background shows raw plaster walls waiting to be painted. Ultra-realistic, photojournalistic style, unretouched, natural imperfections in the plaster surface, authentic work environment.",
+  "negative_prompt": "no plastic skin, no CGI, no illustration, no stock photo feel, no perfect studio lighting, no artificial colors, no over-sharpening, no beauty filters, no fake depth of field",
+  "api_parameters": {
+    "resolution": "1K",
+    "output_format": "jpg",
+    "aspect_ratio": "4:5"
+  }
+}

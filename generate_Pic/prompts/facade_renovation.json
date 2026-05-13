@@ -1,0 +1,9 @@
+{
+  "prompt": "Documentary photograph of a freshly renovated traditional Swiss residential house facade in Winterthur. The plaster exterior is newly painted in clean warm white with subtle gray undertones, crisp window frames painted in dark forest green. Scaffolding partially visible on the side showing ongoing professional work. A professional painter in safety vest is visible high up applying final coat. Traditional Swiss architecture with shutters, tile roof. Overcast Swiss daylight, true-to-life colors, slight chromatic aberration from telephoto compression. 85mm lens, f/5.6, ISO 400, shot from street level looking slightly upward. Surrounding street has parked cars and mature trees. Real neighborhood context, authentic Swiss village feel.",
+  "negative_prompt": "no CGI, no illustration, no perfect studio conditions, no tropical or non-Swiss architecture, no summer sunshine oversaturation, no fake scaffolding, no stock photo perfection",
+  "api_parameters": {
+    "resolution": "1K",
+    "output_format": "jpg",
+    "aspect_ratio": "4:5"
+  }
+}

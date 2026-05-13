@@ -109,6 +109,51 @@
       box-shadow: 0 10px 30px rgba(0, 106, 93, 0.08);
       transform: translateY(-2px);
     }
+
+    /* Hide scrollbar on mobile scroll areas */
+    .no-scrollbar::-webkit-scrollbar { display: none; }
+    .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+
+    /* Scroll reveal */
+    .reveal {
+      opacity: 0;
+      transform: translateY(28px);
+      transition: opacity 0.55s ease, transform 0.55s ease;
+    }
+    .reveal.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    .reveal-delay-1 { transition-delay: 0.1s; }
+    .reveal-delay-2 { transition-delay: 0.2s; }
+    .reveal-delay-3 { transition-delay: 0.3s; }
+
+    /* Floating call button pulse */
+    @keyframes pulse-ring {
+      0%   { box-shadow: 0 0 0 0   rgba(0,106,93,0.45); }
+      70%  { box-shadow: 0 0 0 14px rgba(0,106,93,0); }
+      100% { box-shadow: 0 0 0 0   rgba(0,106,93,0); }
+    }
+    .pulse-ring { animation: pulse-ring 2.5s ease infinite; }
+
+    /* Mobile service card gradient fallbacks */
+    .svc-bg-1 { background: linear-gradient(150deg,#006a5d,#004d44); }
+    .svc-bg-2 { background: linear-gradient(150deg,#2e5016,#1b3010); }
+    .svc-bg-3 { background: linear-gradient(150deg,#6d4c41,#3e2723); }
+    .svc-bg-4 { background: linear-gradient(150deg,#006a5d,#00332d); }
+
+    /* Gallery scroll-track image */
+    .gallery-img { transition: transform 0.4s ease; }
+    .gallery-img:active { transform: scale(0.97); }
+
+    /* Stats counter number */
+    .stat-num {
+      font-family: 'Source Serif 4', serif;
+      font-size: 2rem;
+      font-weight: 700;
+      line-height: 1;
+      color: #006a5d;
+    }
   </style>
 </head>
 
@@ -285,44 +330,124 @@
       </div>
     </div>
 
-    <!-- ── Mobile: Vertical list ── -->
-    <div class="flex flex-col gap-md md:hidden">
-      <div class="flex items-start gap-md p-md bg-surface-container-low border border-outline-variant/30 rounded-lg">
-        <div class="bg-primary/10 p-sm rounded text-primary flex-shrink-0">
-          <span class="material-symbols-outlined">format_paint</span>
+    <!-- ── Mobile: Horizontal scrollable image cards ── -->
+    <div class="md:hidden -mx-gutter">
+      <div id="mobile-service-scroll" class="flex gap-sm overflow-x-auto pb-sm px-gutter no-scrollbar snap-x snap-mandatory" style="scroll-padding-left:24px;">
+
+        <!-- Card 1 -->
+        <div class="reveal flex-none w-[72vw] snap-start rounded-2xl overflow-hidden relative" style="height:300px;">
+          <div class="svc-bg-1 absolute inset-0"></div>
+          <img src="generate_Pic/images/painter_interior.jpg" alt="Innenanstrich" class="absolute inset-0 w-full h-full object-cover" loading="lazy" onerror="this.style.opacity='0'">
+          <div class="absolute inset-0" style="background:linear-gradient(to top,rgba(0,0,0,0.78) 0%,rgba(0,0,0,0.1) 60%,transparent 100%);"></div>
+          <div class="absolute inset-0 flex flex-col justify-end p-md">
+            <div class="w-10 h-10 rounded-full bg-white/20 backdrop-blur-sm flex items-center justify-center mb-sm">
+              <span class="material-symbols-outlined text-white" style="font-size:20px;font-variation-settings:'FILL' 1;">format_paint</span>
+            </div>
+            <h3 class="text-white font-semibold mb-xs" style="font-family:'Source Serif 4',serif;font-size:20px;">Innenanstrich</h3>
+            <p class="text-white/80 text-sm leading-snug">Hochwertige Wandgestaltung für ein gesundes Wohnklima.</p>
+          </div>
         </div>
-        <div>
-          <h3 class="text-button text-on-surface font-semibold">Innenanstrich</h3>
-          <p class="text-body-md text-on-surface-variant mt-xs">Hochwertige Wandgestaltung für ein gesundes Wohnklima.</p>
+
+        <!-- Card 2 -->
+        <div class="reveal reveal-delay-1 flex-none w-[72vw] snap-start rounded-2xl overflow-hidden relative" style="height:300px;">
+          <div class="svc-bg-2 absolute inset-0"></div>
+          <img src="generate_Pic/images/facade_renovation.jpg" alt="Fassadenrenovierung" class="absolute inset-0 w-full h-full object-cover" loading="lazy" onerror="this.style.opacity='0'">
+          <div class="absolute inset-0" style="background:linear-gradient(to top,rgba(0,0,0,0.78) 0%,rgba(0,0,0,0.1) 60%,transparent 100%);"></div>
+          <div class="absolute inset-0 flex flex-col justify-end p-md">
+            <div class="w-10 h-10 rounded-full bg-white/20 backdrop-blur-sm flex items-center justify-center mb-sm">
+              <span class="material-symbols-outlined text-white" style="font-size:20px;font-variation-settings:'FILL' 1;">home_work</span>
+            </div>
+            <h3 class="text-white font-semibold mb-xs" style="font-family:'Source Serif 4',serif;font-size:20px;">Fassaden­renovation</h3>
+            <p class="text-white/80 text-sm leading-snug">Schutz und Ästhetik für die Werterhaltung Ihrer Immobilie.</p>
+          </div>
+        </div>
+
+        <!-- Card 3 -->
+        <div class="reveal reveal-delay-2 flex-none w-[72vw] snap-start rounded-2xl overflow-hidden relative" style="height:300px;">
+          <div class="svc-bg-3 absolute inset-0"></div>
+          <img src="generate_Pic/images/decorative_texture.jpg" alt="Dekorative Techniken" class="absolute inset-0 w-full h-full object-cover" loading="lazy" onerror="this.style.opacity='0'">
+          <div class="absolute inset-0" style="background:linear-gradient(to top,rgba(0,0,0,0.78) 0%,rgba(0,0,0,0.1) 60%,transparent 100%);"></div>
+          <div class="absolute inset-0 flex flex-col justify-end p-md">
+            <div class="w-10 h-10 rounded-full bg-white/20 backdrop-blur-sm flex items-center justify-center mb-sm">
+              <span class="material-symbols-outlined text-white" style="font-size:20px;font-variation-settings:'FILL' 1;">brush</span>
+            </div>
+            <h3 class="text-white font-semibold mb-xs" style="font-family:'Source Serif 4',serif;font-size:20px;">Dekorative Techniken</h3>
+            <p class="text-white/80 text-sm leading-snug">Exklusive Spachtel- und Lasurtechniken für Unikate.</p>
+          </div>
+        </div>
+
+        <!-- Card 4 -->
+        <div class="reveal reveal-delay-3 flex-none w-[72vw] snap-start rounded-2xl overflow-hidden relative" style="height:300px;">
+          <div class="svc-bg-4 absolute inset-0"></div>
+          <div class="absolute inset-0" style="background:linear-gradient(to top,rgba(0,0,0,0.6) 0%,transparent 70%);"></div>
+          <div class="absolute inset-0 flex flex-col justify-end p-md">
+            <div class="w-10 h-10 rounded-full bg-white/20 backdrop-blur-sm flex items-center justify-center mb-sm">
+              <span class="material-symbols-outlined text-white" style="font-size:20px;font-variation-settings:'FILL' 1;">home_repair_service</span>
+            </div>
+            <h3 class="text-white font-semibold mb-xs" style="font-family:'Source Serif 4',serif;font-size:20px;">Fassaden &amp; Isolationen</h3>
+            <p class="text-white/80 text-sm leading-snug">Schutz und Energieeffizienz für Ihre Immobilie.</p>
+          </div>
+        </div>
+
+      </div>
+      <!-- Scroll indicator dots -->
+      <div class="flex justify-center gap-xs mt-md px-gutter" id="mobile-service-dots">
+        <div class="h-1.5 rounded-full bg-primary transition-all duration-300 w-6"></div>
+        <div class="h-1.5 rounded-full bg-outline-variant transition-all duration-300 w-1.5"></div>
+        <div class="h-1.5 rounded-full bg-outline-variant transition-all duration-300 w-1.5"></div>
+        <div class="h-1.5 rounded-full bg-outline-variant transition-all duration-300 w-1.5"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════
+       PORTFOLIO GALLERY – Mobile only
+  ═══════════════════════════════════════ -->
+  <section class="md:hidden py-lg bg-surface-container-low">
+    <div class="px-gutter mb-md reveal">
+      <span class="text-label-md text-primary uppercase tracking-widest font-semibold">Portfolio</span>
+      <h2 class="text-headline-md mt-xs" style="font-family:'Source Serif 4',serif;">Unsere Projekte</h2>
+      <p class="text-body-md text-on-surface-variant mt-xs">Ausgewählte Arbeiten aus dem Kanton Zürich.</p>
+    </div>
+    <div class="flex gap-sm overflow-x-auto pb-sm -mx-gutter px-gutter no-scrollbar">
+      <div class="flex-none w-52 rounded-xl overflow-hidden relative gallery-img" style="height:190px;">
+        <div class="absolute inset-0 bg-primary/40"></div>
+        <img src="generate_Pic/images/finished_living_room.jpg" alt="Wohnzimmer" class="absolute inset-0 w-full h-full object-cover" loading="lazy" onerror="this.style.opacity='0'">
+        <div class="absolute bottom-0 left-0 right-0 px-sm pb-sm pt-lg" style="background:linear-gradient(to top,rgba(0,0,0,0.7) 0%,transparent 100%);">
+          <span class="text-white text-xs font-semibold">Wohnzimmer</span>
+          <span class="text-white/60 text-xs block">Zürich</span>
         </div>
       </div>
-      <div class="flex items-start gap-md p-md bg-surface-container-low border border-outline-variant/30 rounded-lg">
-        <div class="bg-primary/10 p-sm rounded text-primary flex-shrink-0">
-          <span class="material-symbols-outlined">home_work</span>
-        </div>
-        <div>
-          <h3 class="text-button text-on-surface font-semibold">Fassadenrenovierung</h3>
-          <p class="text-body-md text-on-surface-variant mt-xs">Schutz und Ästhetik für die Werterhaltung Ihrer Immobilie.</p>
-        </div>
-      </div>
-      <div class="flex items-start gap-md p-md bg-surface-container-low border border-outline-variant/30 rounded-lg">
-        <div class="bg-primary/10 p-sm rounded text-primary flex-shrink-0">
-          <span class="material-symbols-outlined">brush</span>
-        </div>
-        <div>
-          <h3 class="text-button text-on-surface font-semibold">Dekorative Techniken</h3>
-          <p class="text-body-md text-on-surface-variant mt-xs">Exklusive Spachtel- und Lasurtechniken für Unikate.</p>
+      <div class="flex-none w-52 rounded-xl overflow-hidden relative gallery-img" style="height:190px;">
+        <div class="absolute inset-0 bg-secondary/40"></div>
+        <img src="generate_Pic/images/facade_renovation.jpg" alt="Fassade" class="absolute inset-0 w-full h-full object-cover" loading="lazy" onerror="this.style.opacity='0'">
+        <div class="absolute bottom-0 left-0 right-0 px-sm pb-sm pt-lg" style="background:linear-gradient(to top,rgba(0,0,0,0.7) 0%,transparent 100%);">
+          <span class="text-white text-xs font-semibold">Fassade</span>
+          <span class="text-white/60 text-xs block">Winterthur</span>
         </div>
       </div>
-      <div class="flex items-start gap-md p-md bg-surface-container-low border border-outline-variant/30 rounded-lg">
-        <div class="bg-primary/10 p-sm rounded text-primary flex-shrink-0">
-          <span class="material-symbols-outlined">home_repair_service</span>
-        </div>
-        <div>
-          <h3 class="text-button text-on-surface font-semibold">Fassaden &amp; Isolationen</h3>
-          <p class="text-body-md text-on-surface-variant mt-xs">Schutz und Energieeffizienz für Ihre Immobilie.</p>
+      <div class="flex-none w-52 rounded-xl overflow-hidden relative gallery-img" style="height:190px;">
+        <div class="absolute inset-0 svc-bg-3"></div>
+        <img src="generate_Pic/images/decorative_texture.jpg" alt="Dekorputz" class="absolute inset-0 w-full h-full object-cover" loading="lazy" onerror="this.style.opacity='0'">
+        <div class="absolute bottom-0 left-0 right-0 px-sm pb-sm pt-lg" style="background:linear-gradient(to top,rgba(0,0,0,0.7) 0%,transparent 100%);">
+          <span class="text-white text-xs font-semibold">Dekorputz</span>
+          <span class="text-white/60 text-xs block">Effretikon</span>
         </div>
       </div>
+      <div class="flex-none w-52 rounded-xl overflow-hidden relative gallery-img" style="height:190px;">
+        <div class="absolute inset-0 svc-bg-1"></div>
+        <img src="generate_Pic/images/painter_interior.jpg" alt="Malerarbeiten" class="absolute inset-0 w-full h-full object-cover" loading="lazy" onerror="this.style.opacity='0'">
+        <div class="absolute bottom-0 left-0 right-0 px-sm pb-sm pt-lg" style="background:linear-gradient(to top,rgba(0,0,0,0.7) 0%,transparent 100%);">
+          <span class="text-white text-xs font-semibold">Malerarbeiten</span>
+          <span class="text-white/60 text-xs block">Seuzach</span>
+        </div>
+      </div>
+    </div>
+    <div class="px-gutter mt-md reveal">
+      <button class="w-full border-2 border-primary text-primary py-sm rounded-xl text-button font-semibold flex items-center justify-center gap-sm active:scale-95 transition-transform duration-200">
+        <span class="material-symbols-outlined" style="font-size:18px;">photo_library</span>
+        Alle Projekte ansehen
+      </button>
     </div>
   </section>
 
@@ -372,23 +497,74 @@
         </div>
       </div>
 
-      <!-- ── Mobile: Quote + Stats ── -->
+      <!-- ── Mobile: Enhanced with photo + stats + features ── -->
       <div class="md:hidden">
-        <h2 class="text-headline-md mb-md" style="font-family:'Source Serif 4',serif;">Über uns</h2>
-        <p class="text-body-lg text-on-surface-variant mb-md italic border-l-4 border-primary pl-md">
+        <!-- Team photo banner -->
+        <div class="reveal relative rounded-2xl overflow-hidden mb-lg" style="height:210px;">
+          <div class="svc-bg-1 absolute inset-0"></div>
+          <img src="generate_Pic/images/painter_interior.jpg" alt="Maler Binder &amp; Nick Team" class="absolute inset-0 w-full h-full object-cover" loading="lazy" onerror="this.style.opacity='0'">
+          <div class="absolute inset-0" style="background:linear-gradient(to top,rgba(0,0,0,0.65) 0%,rgba(0,0,0,0.1) 60%,transparent 100%);"></div>
+          <!-- Badge -->
+          <div class="absolute top-md right-md bg-secondary-container rounded-xl px-sm py-xs shadow-lg">
+            <span class="text-on-secondary-container font-bold block text-center" style="font-family:'Source Serif 4',serif;font-size:22px;">35+</span>
+            <span class="text-on-secondary-container text-xs font-semibold block text-center">Jahre</span>
+          </div>
+          <!-- Bottom caption -->
+          <div class="absolute bottom-md left-md">
+            <span class="text-white font-semibold text-button block">Maler Binder &amp; Nick</span>
+            <span class="text-white/70 text-sm">Winterthur &amp; Region seit 1985</span>
+          </div>
+        </div>
+
+        <h2 class="reveal text-headline-md mb-md" style="font-family:'Source Serif 4',serif;">Über uns</h2>
+        <p class="reveal text-body-lg text-on-surface-variant mb-md italic border-l-4 border-primary pl-md">
           "Qualität ist kein Zufall, sie ist das Ergebnis konsequenter Präzision."
         </p>
-        <p class="text-body-md text-on-surface-variant mb-lg">
+        <p class="reveal text-body-md text-on-surface-variant mb-lg">
           Maler Binder &amp; Nick steht seit über drei Jahrzehnten für Schweizer Zuverlässigkeit. Als Familienbetrieb verbinden wir traditionelles Handwerk mit modernsten, ökologischen Materialien.
         </p>
-        <div class="grid grid-cols-2 gap-md">
-          <div class="flex flex-col">
-            <span class="text-display-lg text-primary leading-none" style="font-family:'Source Serif 4',serif;">35+</span>
-            <span class="text-label-md text-on-surface-variant mt-xs font-semibold">Jahre Erfahrung</span>
+
+        <!-- Stats: 3 columns -->
+        <div class="reveal grid grid-cols-3 gap-sm mb-lg">
+          <div class="bg-surface-container rounded-xl p-sm text-center border border-outline-variant/30">
+            <span class="stat-num">35+</span>
+            <span class="text-label-md text-on-surface-variant block mt-xs font-semibold">Jahre</span>
           </div>
-          <div class="flex flex-col">
-            <span class="text-display-lg text-primary leading-none" style="font-family:'Source Serif 4',serif;">12</span>
-            <span class="text-label-md text-on-surface-variant mt-xs font-semibold">Spezialisten</span>
+          <div class="bg-surface-container rounded-xl p-sm text-center border border-outline-variant/30">
+            <span class="stat-num">12</span>
+            <span class="text-label-md text-on-surface-variant block mt-xs font-semibold">Profis</span>
+          </div>
+          <div class="bg-surface-container rounded-xl p-sm text-center border border-outline-variant/30">
+            <span class="stat-num">500+</span>
+            <span class="text-label-md text-on-surface-variant block mt-xs font-semibold">Projekte</span>
+          </div>
+        </div>
+
+        <!-- Feature list -->
+        <div class="reveal flex flex-col gap-sm">
+          <div class="flex items-center gap-sm">
+            <div class="w-8 h-8 rounded-full bg-primary/10 flex items-center justify-center flex-shrink-0">
+              <span class="material-symbols-outlined text-primary" style="font-size:16px;font-variation-settings:'FILL' 1;">check_circle</span>
+            </div>
+            <span class="text-button font-semibold">Zertifizierte Fachkräfte</span>
+          </div>
+          <div class="flex items-center gap-sm">
+            <div class="w-8 h-8 rounded-full bg-primary/10 flex items-center justify-center flex-shrink-0">
+              <span class="material-symbols-outlined text-primary" style="font-size:16px;font-variation-settings:'FILL' 1;">eco</span>
+            </div>
+            <span class="text-button font-semibold">Nachhaltige Materialien</span>
+          </div>
+          <div class="flex items-center gap-sm">
+            <div class="w-8 h-8 rounded-full bg-primary/10 flex items-center justify-center flex-shrink-0">
+              <span class="material-symbols-outlined text-primary" style="font-size:16px;font-variation-settings:'FILL' 1;">timer</span>
+            </div>
+            <span class="text-button font-semibold">Schweizer Präzisionsterminierung</span>
+          </div>
+          <div class="flex items-center gap-sm">
+            <div class="w-8 h-8 rounded-full bg-primary/10 flex items-center justify-center flex-shrink-0">
+              <span class="material-symbols-outlined text-primary" style="font-size:16px;font-variation-settings:'FILL' 1;">handshake</span>
+            </div>
+            <span class="text-button font-semibold">Familienbetrieb – persönlich &amp; fair</span>
           </div>
         </div>
       </div>
@@ -455,25 +631,85 @@
     </div>
   </section>
 
-  <!-- Mobile: Single centered testimonial -->
-  <section class="md:hidden py-xl px-gutter">
-    <div class="flex flex-col items-center text-center">
-      <span class="material-symbols-outlined text-primary mb-md" style="font-size:40px;font-variation-settings:'FILL' 1;">format_quote</span>
-      <p class="text-headline-md text-on-surface italic mb-lg" style="font-family:'Source Serif 4',serif;">
-        "Binder &amp; Nick haben unsere Erwartungen übertroffen. Die Baustelle war jeden Abend perfekt aufgeräumt."
-      </p>
-      <img
-        alt="Hans-Peter Egger"
-        class="w-16 h-16 rounded-full mb-sm object-cover grayscale"
-        src="https://lh3.googleusercontent.com/aida-public/AB6AXuBH8lATzzyXpUk0T4zt69G00aLG0rD1_LYmUgOf7RgE7RaDFyxUXd7oqGtDdlL0AsC__Tl8VX6tmCvucsRgey8ZNxXYF0WmpTK3mnHu_gw4ZHmps1UDDCNjD-l8KdTtmkExDq9-OLGfzMVL0eLsyhO0Khr8hgZb4-LRhHE-D53cTKHNQXDgEFWL_XipG2ezk7aLP-6ub1vk7eZd4gwu8hK_pTI8826DPwbp_tbjAu61UxLUIRgvQio7LKFW2jmS2AyhRNmrbLmm7wWk"
-      />
-      <span class="text-button text-on-surface font-semibold">Hans-Peter Egger</span>
-      <span class="text-body-md text-on-surface-variant">Architekt, Zürich</span>
-      <div class="flex gap-xs mt-lg">
-        <div class="w-2 h-2 rounded-full bg-primary"></div>
-        <div class="w-2 h-2 rounded-full bg-outline-variant"></div>
-        <div class="w-2 h-2 rounded-full bg-outline-variant"></div>
+  <!-- Mobile: Testimonial cards -->
+  <section class="md:hidden py-xl px-gutter bg-surface-container-low">
+    <div class="reveal mb-lg">
+      <span class="text-label-md text-primary uppercase tracking-widest font-semibold">Bewertungen</span>
+      <h2 class="text-headline-md mt-xs" style="font-family:'Source Serif 4',serif;">Was Kunden sagen</h2>
+    </div>
+    <div class="flex flex-col gap-md">
+
+      <!-- Testimonial 1 -->
+      <div class="reveal bg-white rounded-2xl p-md shadow-sm border border-outline-variant/20">
+        <div class="flex gap-xs mb-sm">
+          <span class="material-symbols-outlined" style="font-variation-settings:'FILL' 1;font-size:18px;color:#f59e0b;">star</span>
+          <span class="material-symbols-outlined" style="font-variation-settings:'FILL' 1;font-size:18px;color:#f59e0b;">star</span>
+          <span class="material-symbols-outlined" style="font-variation-settings:'FILL' 1;font-size:18px;color:#f59e0b;">star</span>
+          <span class="material-symbols-outlined" style="font-variation-settings:'FILL' 1;font-size:18px;color:#f59e0b;">star</span>
+          <span class="material-symbols-outlined" style="font-variation-settings:'FILL' 1;font-size:18px;color:#f59e0b;">star</span>
+        </div>
+        <p class="text-body-md text-on-surface italic mb-md">
+          "Binder &amp; Nick haben unsere Erwartungen übertroffen. Die Baustelle war jeden Abend perfekt aufgeräumt."
+        </p>
+        <div class="flex items-center gap-sm">
+          <img
+            alt="Hans-Peter Egger"
+            class="w-10 h-10 rounded-full object-cover flex-shrink-0"
+            src="https://lh3.googleusercontent.com/aida-public/AB6AXuBH8lATzzyXpUk0T4zt69G00aLG0rD1_LYmUgOf7RgE7RaDFyxUXd7oqGtDdlL0AsC__Tl8VX6tmCvucsRgey8ZNxXYF0WmpTK3mnHu_gw4ZHmps1UDDCNjD-l8KdTtmkExDq9-OLGfzMVL0eLsyhO0Khr8hgZb4-LRhHE-D53cTKHNQXDgEFWL_XipG2ezk7aLP-6ub1vk7eZd4gwu8hK_pTI8826DPwbp_tbjAu61UxLUIRgvQio7LKFW2jmS2AyhRNmrbLmm7wWk"
+          />
+          <div>
+            <span class="text-button font-semibold block">Hans-Peter Egger</span>
+            <span class="text-body-md text-on-surface-variant">Architekt, Zürich</span>
+          </div>
+        </div>
       </div>
+
+      <!-- Testimonial 2 -->
+      <div class="reveal reveal-delay-1 bg-white rounded-2xl p-md shadow-sm border border-outline-variant/20">
+        <div class="flex gap-xs mb-sm">
+          <span class="material-symbols-outlined" style="font-variation-settings:'FILL' 1;font-size:18px;color:#f59e0b;">star</span>
+          <span class="material-symbols-outlined" style="font-variation-settings:'FILL' 1;font-size:18px;color:#f59e0b;">star</span>
+          <span class="material-symbols-outlined" style="font-variation-settings:'FILL' 1;font-size:18px;color:#f59e0b;">star</span>
+          <span class="material-symbols-outlined" style="font-variation-settings:'FILL' 1;font-size:18px;color:#f59e0b;">star</span>
+          <span class="material-symbols-outlined" style="font-variation-settings:'FILL' 1;font-size:18px;color:#f59e0b;">star</span>
+        </div>
+        <p class="text-body-md text-on-surface italic mb-md">
+          "Hervorragende Arbeit! Pünktlich, sauber und extrem professionell. Unser Wohnzimmer sieht fantastisch aus."
+        </p>
+        <div class="flex items-center gap-sm">
+          <div class="w-10 h-10 rounded-full bg-primary flex items-center justify-center flex-shrink-0">
+            <span class="text-white font-bold text-sm">MS</span>
+          </div>
+          <div>
+            <span class="text-button font-semibold block">Markus S.</span>
+            <span class="text-body-md text-on-surface-variant">Winterthur</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Testimonial 3 -->
+      <div class="reveal reveal-delay-2 bg-white rounded-2xl p-md shadow-sm border border-outline-variant/20">
+        <div class="flex gap-xs mb-sm">
+          <span class="material-symbols-outlined" style="font-variation-settings:'FILL' 1;font-size:18px;color:#f59e0b;">star</span>
+          <span class="material-symbols-outlined" style="font-variation-settings:'FILL' 1;font-size:18px;color:#f59e0b;">star</span>
+          <span class="material-symbols-outlined" style="font-variation-settings:'FILL' 1;font-size:18px;color:#f59e0b;">star</span>
+          <span class="material-symbols-outlined" style="font-variation-settings:'FILL' 1;font-size:18px;color:#f59e0b;">star</span>
+          <span class="material-symbols-outlined" style="font-variation-settings:'FILL' 1;font-size:18px;color:#f59e0b;">star</span>
+        </div>
+        <p class="text-body-md text-on-surface italic mb-md">
+          "Die ökologische Farbwahl war uns wichtig. Maler Binder &amp; Nick hat uns hierbei perfekt beraten."
+        </p>
+        <div class="flex items-center gap-sm">
+          <div class="w-10 h-10 rounded-full bg-secondary flex items-center justify-center flex-shrink-0">
+            <span class="text-white font-bold text-sm">TB</span>
+          </div>
+          <div>
+            <span class="text-button font-semibold block">Thomas B.</span>
+            <span class="text-body-md text-on-surface-variant">Seuzach</span>
+          </div>
+        </div>
+      </div>
+
     </div>
   </section>
 
@@ -574,7 +810,7 @@
 
 <!-- Floating call button (mobile only) -->
 <a
-  class="fixed bottom-gutter right-gutter w-14 h-14 bg-primary text-on-primary rounded-full flex items-center justify-center shadow-xl z-40 md:hidden hover:opacity-90 transition-opacity duration-200 active:scale-95"
+  class="pulse-ring fixed bottom-gutter right-gutter w-14 h-14 bg-primary text-on-primary rounded-full flex items-center justify-center shadow-xl z-40 md:hidden hover:opacity-90 transition-opacity duration-200 active:scale-95"
   href="tel:+41000000000"
   aria-label="Anrufen"
 >
@@ -582,6 +818,7 @@
 </a>
 
 <script>
+  // ── Mobile nav ──
   const toggle = document.getElementById('menu-toggle');
   const menu   = document.getElementById('mobile-menu');
   const icon   = document.getElementById('menu-icon');
@@ -592,7 +829,6 @@
     toggle.setAttribute('aria-expanded', isOpen);
   });
 
-  // Close when any menu link is tapped
   menu.querySelectorAll('a').forEach(a => {
     a.addEventListener('click', () => {
       menu.classList.remove('open');
@@ -600,6 +836,35 @@
       toggle.setAttribute('aria-expanded', 'false');
     });
   });
+
+  // ── Scroll reveal (IntersectionObserver) ──
+  const revealObserver = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        e.target.classList.add('visible');
+        revealObserver.unobserve(e.target);
+      }
+    });
+  }, { threshold: 0.1 });
+
+  document.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
+
+  // ── Mobile service card scroll dots ──
+  const serviceScroll = document.getElementById('mobile-service-scroll');
+  const dots = document.querySelectorAll('#mobile-service-dots > div');
+  if (serviceScroll && dots.length) {
+    serviceScroll.addEventListener('scroll', () => {
+      const cardW = serviceScroll.firstElementChild
+        ? serviceScroll.firstElementChild.offsetWidth + 8
+        : serviceScroll.clientWidth;
+      const idx = Math.min(Math.round(serviceScroll.scrollLeft / cardW), dots.length - 1);
+      dots.forEach((d, i) => {
+        d.style.width   = i === idx ? '24px' : '6px';
+        d.classList.toggle('bg-primary',        i === idx);
+        d.classList.toggle('bg-outline-variant', i !== idx);
+      });
+    }, { passive: true });
+  }
 </script>
 
 </body>

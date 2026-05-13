@@ -1,0 +1,9 @@
+{
+  "prompt": "Extreme close-up macro photograph of a freshly applied decorative venetian plaster wall texture. The surface shows intricate hand-applied marmorino plaster with subtle metallic gold undertones and beautiful organic variation in depth. A craftsman's stainless steel trowel is held at the edge of frame, mid-application, showing the technique. Warm raking side-light highlights every microscopic ridge and swirl in the plaster. Depth of field is shallow, blurring background elements. Real material texture with micro-scratches in the trowel marks, authentic imperfections, gorgeous artisanal quality. 100mm macro lens, f/4, ISO 250, professional photography. The wall surface fills 80% of frame.",
+  "negative_prompt": "no CGI material renders, no 3D textures, no over-polished surfaces, no artificial perfect pattern, no stock photo generic wall, no illustration style",
+  "api_parameters": {
+    "resolution": "1K",
+    "output_format": "jpg",
+    "aspect_ratio": "4:5"
+  }
+}
